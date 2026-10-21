@@ -1,28 +1,46 @@
 # Handover: Chaoping Ma – Personal Website
 
-**For:** Claude Code
-**Owner:** Chaoping Ma
-**Goal:** Deploy this finished static site to GitHub Pages. Keep it as plain HTML. There is no build step and no framework.
+**For:** the next Claude session (Claude Code or Cowork)
+**Owner:** Chaoping Ma (GitHub: `mcpcoaching`)
+**Last updated:** 2026-10-21
 
 ---
 
-## 1. TL;DR – what you need to do
+## 1. Current state – LIVE
 
-1. Check the files (section 3). The site is already built and tested. **Do not rebuild it from scratch.**
-2. Open `index.html` in a browser (or Playwright) and confirm the acceptance checklist (section 8) passes.
-3. Create the GitHub repo, push, and turn on GitHub Pages (section 7).
-4. Report the live URL back to the owner.
+| | |
+|---|---|
+| Live site | https://mcpcoaching.github.io/ |
+| Repo | https://github.com/mcpcoaching/mcpcoaching.github.io (public) |
+| Branch / Pages source | `main`, folder `/` (root). Pages turned on automatically because of the `<user>.github.io` repo name. |
+| Build | None. Plain static HTML. Each push to `main` redeploys in about 1 minute. |
+| Jekyll | Off (`.nojekyll` in root). |
 
-Ask the owner before changing any wording, design or structure. The content has been reviewed against her latest CV.
+History:
+1. 2026-10-21: First deploy. The site came from Cowork's `chaoping-website_1.zip`, unchanged.
+2. 2026-10-21: Added a favicon: the owner's cartoon head (`assets/favicon.svg` and `assets/apple-touch-icon.png`). The owner checked it and approved.
+
+The acceptance checklist (section 8) passed on the live URL. That covers: no console errors; all 144 `data-i18n` elements filled in EN/DE/ZH; `<html lang>` and the title switch; both LinkedIn links are correct and open with `_blank`; the certificate loads; no PDF, email or phone. The page has 26 figures in total: 6 testimonial avatars and 20 in the crowd. The footer reads "© 2026 Chaoping Ma · Heidelberg". There is no horizontal scroll at 384px. Not tested by hand: lightbox click, and whether language and theme stay after a reload.
 
 ---
 
-## 2. Context
+## 2. How to make a change (workflow)
 
-- **Who:** Chaoping Ma. Strategy & Transformation leader, ex-McKinsey (2019–2024), now Senior Project Manager at BASF In-house Consulting (since 03/2025). ICF Associate Certified Coach (ACC). Based in Heidelberg.
-- **Purpose of the site:** a personal page used for job applications (professional profile) and to present her coaching side business.
-- **Languages:** EN / DE / 中文. The visitor switches in the header. The default follows the browser language, and the choice is remembered in `localStorage`.
-- **Tone:** sharp, concise and humble (MBB consultant). Keep the copy conservative and professional.
+1. Clone: `gh repo clone mcpcoaching/mcpcoaching.github.io`. Or use git with HTTPS.
+2. Edit the files. Ask the owner first before you change wording, design or structure (see section 4).
+3. Commit and push to `main`. Wait for the build:
+   `gh api repos/mcpcoaching/mcpcoaching.github.io/pages/builds/latest --jq .status` → `built`
+4. Check the live URL. Tell the owner they may need a hard refresh (Cmd+Shift+R) because of caching.
+
+**Tooling on the owner's Mac (as of 2026-10-21):**
+- No Homebrew. `gh` is not on PATH.
+- GitHub CLI binary: `~/.local/gh/gh_2.103.0_macOS_arm64/bin/gh`. It is logged in as `mcpcoaching` over HTTPS and is set up as the git credential helper.
+  Use it with: `export PATH="$HOME/.local/gh/gh_2.103.0_macOS_arm64/bin:$PATH"`
+- If the auth expired, run this in a terminal tab that the owner can see. The owner pastes the code at github.com/login/device:
+  `gh auth login --hostname github.com --git-protocol https --web --clipboard`
+- No SSH keys. No global git user. Commit with
+  `git -c user.name="Chaoping Ma" -c user.email="mcpcassie@gmail.com" commit ...`
+- A GitHub connector in claude.ai does **not** give local git access. Use `gh`.
 
 ---
 
@@ -32,136 +50,59 @@ Ask the owner before changing any wording, design or structure. The content has 
 /
 ├── index.html                    # Entire site: HTML + CSS + JS, self-contained
 ├── assets/
-│   └── icf-acc-certificate.png   # ICF ACC certificate (image only, 1210×935)
-├── README.md                     # Short manual deploy guide for the owner
+│   ├── icf-acc-certificate.png   # ICF ACC certificate (image only, 1210×935)
+│   ├── favicon.svg               # Tab icon: owner's cartoon head, yellow circle, ink border
+│   └── apple-touch-icon.png      # 180×180 PNG of the same (Safari / iOS home screen)
+├── .nojekyll
+├── README.md                     # Short manual guide for the owner
 └── HANDOVER.md                   # This file
 ```
 
-External dependencies: **Google Fonts only** (DM Serif Display, Inter, Noto Sans SC, Noto Serif SC). The site uses no JS libraries and no CDN scripts.
+External dependencies: Google Fonts only (DM Serif Display, Inter, Noto Sans SC, Noto Serif SC). No JS libraries.
 
 ---
 
-## 4. Page structure (`index.html`)
+## 4. Content rules (do not break)
+
+- **Tone:** sharp, concise and humble (MBB consultant). Keep the copy conservative.
+- **Ask the owner first** before any change to wording, design or structure.
+- **LinkedIn:** `https://www.linkedin.com/in/chaoping-ma-8b560373`. It is set once in the `LINKEDIN_URL` constant and applied to every `.js-linkedin` link.
+- **No phone number and no email on the site.** This is the owner's privacy choice.
+- **Certificate:** show it as an image only. No PDF link and no download button. The in-page lightbox is fine. Awarded 23.10.2025, valid through 31.10.2028.
+- **Career break bullet:** keep "Completed ICF-accredited coach training". The ACC was awarded 10/2025, after the break (07/2024–02/2025).
+- **Testimonials:** anonymised. Never add names.
+- **Illustrations:** original characters only. Never draw recognisable Tintin characters: no quiff, and no ginger hair with a blue sweater. `CAST` has 20 people, ratio 30/20/25/25: Asian women, European women, Asian men, Western men. Keep that ratio.
+
+---
+
+## 5. Page structure (`index.html`)
 
 | Section id | Content |
 |---|---|
-| `#home` (hero) | Name, chips ("Strategy & Transformation", ex-McKinsey, ICF ACC), one-line pitch, LinkedIn button, "Explore coaching" button, illustrated portrait with 2 speech bubbles, 4 stat tiles (7+ years · 300+ initiatives · €500m+ EBITDA potential · 3 languages) |
-| `#about` | 3 paragraphs plus a "What I stand for" card listing 4 values: Equality, Curiosity, Deep connection, Continuous growth |
-| `#experience` | Timeline: BASF (4 bullets) → Career break (3) → McKinsey with 3 sub-roles. Then Education cards (Mannheim, Peking University, Internships) |
-| `#coaching` | Intro + coach/coachee scene; "What coaching is / is not" (4 cards); "When to consider coaching" plus "Who I work with" (audiences + topics); "My coaching style" (6 cards); "How we work together" (4 steps); honest-fit note; ICF certificate card |
-| `#voices` | 6 testimonial quotes with illustrated avatars, plus a "crowd" of 20 illustrated people |
-| `#contact` | CTA panel with a LinkedIn button |
+| `#home` | Name, chips, pitch, LinkedIn and "Explore coaching" buttons, portrait with speech bubbles, 4 stat tiles (7+ years · 300+ initiatives · €500m+ EBITDA potential · 3 languages) |
+| `#about` | 3 paragraphs, plus a "What I stand for" card (Equality, Curiosity, Deep connection, Continuous growth) |
+| `#experience` | Timeline: BASF → Career break → McKinsey (3 sub-roles), then Education cards |
+| `#coaching` | Intro scene, what coaching is and is not, when to consider it, who I work with, style (6 cards), process (4 steps), fit note, ICF certificate card |
+| `#voices` | 6 testimonials, plus a crowd of 20 figures |
+| `#contact` | CTA panel with LinkedIn |
 | footer | © year · Chaoping Ma · Heidelberg |
-
-### Content rules
-- **LinkedIn:** `https://www.linkedin.com/in/chaoping-ma-8b560373`. Set once in the `LINKEDIN_URL` constant at the top of the script and applied to every `.js-linkedin` link.
-- **No phone number and no email on the site.** This is a privacy choice by the owner, even though both appear on her CV.
-- **Certificate:** show it **as an image only**. Do not link to a PDF and do not add a download button. Clicking the image opens an in-page lightbox to enlarge it, and that is fine to keep.
-  - Awarded: 23.10.2025. Valid through: 31.10.2028.
-- **Career break bullet:** keep the wording "Completed ICF-accredited coach training". Do not change it to "Earned the ICF ACC certification", because the certificate's award date (10/2025) falls after the career break (07/2024–02/2025).
-- **Testimonials:** anonymised, shortened and translated from the owner's coaching document. Do not add names.
 
 ---
 
-## 5. How it works (technical)
+## 6. Technical notes
 
-### i18n
-- All translatable text sits in one object `T` near the bottom of `index.html`:
-  ```js
-  "key": ["English", "Deutsch", "中文"]
-  ```
-- Elements carry `data-i18n="key"`. The function `setLang()` sets their `innerHTML`, so simple inline HTML such as `<b>` and `<em>` is allowed.
-- `<html lang>` switches between `en`, `de` and `zh-CN`, and `document.title` changes per language.
-- **To edit text, change the entry in `T`.** Every key must have all 3 languages.
-
-### Illustrations ("ligne claire", Tintin-inspired, all original characters)
-- Generated as inline SVG by `figure(person, flip)` in the script. No image files are used.
-- Style: uniform black outlines (3px), flat colours, dot eyes (with a blink animation), small blush cheeks.
-- **Do not draw recognisable Tintin characters.** The quiff hairstyle and the ginger-hair + blue-sweater combination are deliberately excluded.
-- `CAST` holds 20 people in the **required ratio**:
-  - Asian women 6 (30%): indices 0–5
-  - European women 4 (20%): indices 6–9
-  - Asian men 5 (25%): indices 10–14
-  - Western men 5 (25%): indices 15–19
-- `PEOPLE.me` is the owner (Asian woman, long black hair, navy blazer). `PEOPLE.coachee` is used in the coaching scene.
-- Usage: `<div class="fig" data-person="me|coachee|0-19" [data-flip="1"] [data-crop="1"]>`. `data-crop` zooms in on the face for avatars.
-- If you add figures, keep the overall cast ratio at 30 / 20 / 25 / 25.
-
-### Design system
-- Visual reference: [CommunityPro/portfolio-html](https://github.com/CommunityPro/portfolio-html) for the clean, illustration-led portfolio feel. Interaction reference: [AstroWind](https://github.com/arthelokyo/astrowind) for the sticky header that blurs on scroll, fade-up reveal on scroll, dark mode and card hover lift.
-- Comic-panel accents: 2.5px ink borders, offset hard shadows (`5px 5px 0`), speech bubbles, halftone dot background in the hero.
-- Colour tokens live on `:root`: cream `#FBF7EE`, ink `#17171C`, blue `#2B5CA8`, red `#D6402F`, yellow `#F2C14E`.
-- Dark mode follows `prefers-color-scheme` by default and can be overridden with the moon button (`data-theme`, saved in `localStorage`).
-- `prefers-reduced-motion` disables all animations.
-- Responsive: the nav collapses to a hamburger menu at 860px or narrower, and the brand name is hidden at 480px or narrower. There is no horizontal scroll at 390px width.
+- **i18n:** all text lives in object `T` near the bottom: `"key": ["English", "Deutsch", "中文"]`. Elements carry `data-i18n="key"`, and `setLang()` sets their `innerHTML`. Every key needs all 3 languages. The default language follows the browser. The visitor's choice is saved in `localStorage`.
+- **Figures:** inline SVG from `figure(person, flip)`. Use them as `<div class="fig" data-person="me|coachee|0-19" [data-flip="1"] [data-crop="1"]>`. `data-crop` gives the face-only avatar, as in the header `.brand-mark`.
+- **Favicon:** a static copy of `figure('me')` cropped to viewBox `20 18 80 80`, clipped to a circle on yellow `#F2C14E`. If the portrait in `figure()` changes, regenerate `favicon.svg` the same way. Then re-render the PNG: `qlmanage -t -s 180 -o assets assets/favicon.svg` and rename the output to `apple-touch-icon.png`.
+- **Design tokens** (`:root`): cream `#FBF7EE`, ink `#17171C`, blue `#2B5CA8`, red `#D6402F`, yellow `#F2C14E`. Comic accents: 2.5px ink borders, `5px 5px 0` hard shadows.
+- **Dark mode:** follows `prefers-color-scheme`. The moon button overrides it (`data-theme`, saved in `localStorage`). `prefers-reduced-motion` turns off all animation.
+- **Responsive:** hamburger menu at ≤860px. The brand name is hidden at ≤480px.
 - Every `localStorage` access is wrapped in try/catch.
 
 ---
 
-## 6. Optional improvements (only if the owner asks)
+## 7. Open ideas (only if the owner asks)
 
-- Add `<meta property="og:*">` tags and a social preview image for LinkedIn sharing.
-- Add a favicon. An SVG of the owner's figure head would work.
-- Use a custom domain via a `CNAME` file.
-- Add an email contact. **Ask the owner first.**
-
----
-
-## 7. Deployment to GitHub Pages
-
-Prerequisites: `git` and the GitHub CLI `gh`, authenticated as the owner (`gh auth status`). If you are not authenticated, ask the owner to run `gh auth login`.
-
-**Repo name: ask the owner which option she prefers.**
-- `<github-username>.github.io` → the site is served at `https://<username>.github.io/`. This is recommended for a personal site.
-- Any other name, e.g. `personal-website` → the site is served at `https://<username>.github.io/personal-website/`.
-
-```bash
-cd <project folder containing index.html>
-git init
-git add index.html assets README.md HANDOVER.md
-git commit -m "Initial commit: personal website (EN/DE/ZH)"
-git branch -M main
-
-# Replace REPO with the chosen name
-gh repo create REPO --public --source=. --remote=origin --push
-
-# Enable GitHub Pages from main / root
-gh api -X POST repos/{owner}/REPO/pages \
-  -f "source[branch]=main" -f "source[path]=/"
-
-# Check status / URL (first build takes ~1 min)
-gh api repos/{owner}/REPO/pages --jq '.html_url,.status'
-```
-
-Notes:
-- `{owner}` is filled in automatically by `gh api` when it is run inside the repo. Otherwise use the username from `gh api user --jq .login`.
-- Add an empty `.nojekyll` file to the root to skip Jekyll processing: `touch .nojekyll`, then commit.
-- The repo must be **public** for GitHub Pages on a free account.
-- Asset paths are relative (`assets/...`), so the site works both at the domain root and under `/REPO/`.
-
-After deploying, open the live URL and run the checklist below against it.
-
----
-
-## 8. Acceptance checklist
-
-- [ ] The page loads with no console errors, both locally and at the live URL.
-- [ ] EN / DE / 中文 switching updates **every** text element (no empty or missing strings). The `<html lang>` and the tab title also change.
-- [ ] The language choice persists after a reload.
-- [ ] The dark-mode toggle works, and the choice persists.
-- [ ] Both LinkedIn buttons open `https://www.linkedin.com/in/chaoping-ma-8b560373` in a new tab.
-- [ ] The certificate image loads from `assets/icf-acc-certificate.png`, and clicking it opens the lightbox.
-- [ ] There is no PDF link anywhere.
-- [ ] There is no phone number or email anywhere.
-- [ ] The crowd shows 20 figures (6 Asian women, 4 European women, 5 Asian men, 5 Western men).
-- [ ] On mobile (390px): the hamburger menu works, there is no horizontal scroll, and the header fits on one line.
-- [ ] Scroll-reveal animations play, and are disabled with `prefers-reduced-motion`.
-- [ ] The footer shows "Heidelberg" and the current year.
-
----
-
-## 9. Source material (for reference; already reflected in the site)
-
-- Latest CV: `CV_Chaoping_Ma_SAP.pages` (Oct 2026 version: Heidelberg, updated BASF bullets).
-- Coaching philosophy document: "Personal AI assistant for coaching" (coaching definition, style, audiences, process, testimonials).
-- ICF ACC credential certificate (PDF, rendered to the PNG in `assets/`).
+- `og:*` meta tags and a social preview image for LinkedIn sharing.
+- A custom domain: add a `CNAME` file and set up DNS.
+- Email contact. Ask the owner first, because it is currently excluded on purpose.
