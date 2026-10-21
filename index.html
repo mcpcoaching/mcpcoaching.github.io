@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chaoping Ma</title>
+<meta name="description" content="Chaoping Ma – Strategy & Transformation, ex-McKinsey, ICF-certified Coach (ACC).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBF7EE; --surface:#FFFFFF; --soft:#F3ECDC; --ink:#17171C; --muted:#5C5B66;
+  --line:#17171C; --blue:#2B5CA8; --blue-soft:#DCE6F5; --red:#D6402F; --yellow:#F2C14E; --green:#3E8E6E;
+  --dots:rgba(23,23,28,.07); --shadow:#17171C;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121318; --surface:#1B1D25; --soft:#232633; --ink:#F3EEE2; --muted:#ABA8B4;
+    --line:#3A3E4E; --blue:#7FA6E8; --blue-soft:#24304A; --red:#EE6A57; --yellow:#F2C14E; --green:#6CC39E;
+    --dots:rgba(243,238,226,.06); --shadow:#000;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121318; --surface:#1B1D25; --soft:#232633; --ink:#F3EEE2; --muted:#ABA8B4;
+  --line:#3A3E4E; --blue:#7FA6E8; --blue-soft:#24304A; --red:#EE6A57; --yellow:#F2C14E; --green:#6CC39E;
+  --dots:rgba(243,238,226,.06); --shadow:#000;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--ink);font-family:Inter,"Noto Sans SC",system-ui,sans-serif;line-height:1.65;font-size:16.5px;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
+html[lang="zh-CN"] body{font-family:Inter,"Noto Sans SC",system-ui,sans-serif;line-height:1.8}
+h1,h2,h3{font-family:"DM Serif Display","Noto Serif SC",Georgia,serif;font-weight:400;line-height:1.15;letter-spacing:-.01em}
+html[lang="zh-CN"] h1,html[lang="zh-CN"] h2{font-weight:700;letter-spacing:.02em}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+section{padding:96px 0}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.kicker::before{content:"";display:inline-block;width:22px;height:3px;background:var(--red);vertical-align:middle;margin-right:10px;border-radius:2px}
+.h2{font-size:clamp(2rem,4.2vw,3rem);margin-bottom:18px}
+.lead{font-size:1.12rem;color:var(--muted);max-width:720px}
+.center{text-align:center}.center .lead{margin:0 auto}
+
+/* Header */
+header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,box-shadow .3s,padding .3s;padding:18px 0}
+header.scrolled{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line);padding:10px 0}
+.nav{display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:"DM Serif Display",serif;font-size:1.35rem}
+.brand-mark{width:38px;height:38px;border-radius:50%;border:2.5px solid #17171C;background:var(--yellow);overflow:hidden;flex:none}
+.links{display:flex;gap:26px;margin-left:auto}
+.links a{text-decoration:none;font-weight:500;font-size:.95rem;position:relative}
+.links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--red);transition:width .25s}
+.links a:hover::after{width:100%}
+.tools{display:flex;align-items:center;gap:10px}
+.lang{display:flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden}
+.lang button{white-space:nowrap;background:none;border:0;color:var(--ink);font:600 .8rem Inter,"Noto Sans SC",sans-serif;padding:6px 11px;cursor:pointer}
+.lang button.on{background:var(--ink);color:var(--bg)}
+.icon-btn{width:38px;height:38px;border-radius:50%;border:2px solid var(--ink);background:none;color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.menu-btn{display:none}
+@media (max-width:480px){.brand-name{display:none}.lang button{padding:6px 9px}}
+@media (max-width:860px){
+  .links{position:fixed;inset:64px 16px auto 16px;flex-direction:column;gap:0;background:var(--surface);border:2.5px solid var(--line);border-radius:14px;box-shadow:5px 5px 0 var(--shadow);padding:8px;display:none}
+  .links.open{display:flex}
+  .links a{padding:12px 14px}
+  .menu-btn{display:grid}
+  .tools{margin-left:auto}
+}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:2.5px solid #17171C;transition:transform .2s,box-shadow .2s;cursor:pointer;font-size:.98rem}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:4px 4px 0 #17171C}
+:root[data-theme="dark"] .btn-primary{background:#2B5CA8}
+.btn-ghost{background:var(--surface);color:var(--ink);box-shadow:4px 4px 0 #17171C;border-color:var(--ink)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #17171C}
+
+/* Panels */
+.panel{background:var(--surface);border:2.5px solid var(--line);border-radius:16px;box-shadow:5px 5px 0 var(--shadow);transition:transform .25s,box-shadow .25s}
+.panel.lift:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--shadow)}
+
+/* Hero */
+.hero{padding:150px 0 90px;position:relative;background-image:radial-gradient(var(--dots) 1.4px,transparent 1.4px);background-size:18px 18px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.7rem,6.4vw,4.8rem);margin:6px 0 20px}
+.hero h1 em{font-style:italic;color:var(--red)}
+.tagline{display:inline-flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.chip{font-size:.8rem;font-weight:600;padding:5px 12px;border-radius:999px;border:2px solid var(--ink);background:var(--surface)}
+.chip.y{background:var(--yellow);color:#17171C;border-color:#17171C}
+.hero .lead{font-size:1.2rem;margin-bottom:30px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-art{position:relative;aspect-ratio:1/1.05;max-width:440px;margin-left:auto;width:100%}
+.hero-disc{position:absolute;inset:6% 4% 0 4%;border-radius:50%;background:var(--blue-soft);border:3px solid #17171C}
+.hero-fig{position:absolute;inset:0 6% 0 6%;animation:float 6s ease-in-out infinite}
+.bubble{position:absolute;background:#fff;color:#17171C;border:2.5px solid #17171C;border-radius:18px;padding:10px 16px;font-weight:600;font-size:.92rem;box-shadow:4px 4px 0 #17171C;white-space:nowrap}
+.bubble::after{content:"";position:absolute;width:16px;height:16px;background:#fff;border-right:2.5px solid #17171C;border-bottom:2.5px solid #17171C;bottom:-10px;transform:rotate(45deg)}
+.b1{top:6%;left:-6%;animation:float 5s ease-in-out infinite .4s}.b1::after{right:28px}
+.b2{bottom:22%;right:-8%;background:var(--yellow);animation:float 5.5s ease-in-out infinite 1s}.b2::after{left:24px;background:var(--yellow);top:-10px;bottom:auto;transform:rotate(225deg)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:70px}
+.stat{padding:22px 20px}
+.stat b{display:block;font-family:"DM Serif Display",serif;font-weight:400;font-size:2.4rem;line-height:1;color:var(--blue)}
+.stat span{font-size:.92rem;color:var(--muted)}
+@media (max-width:860px){
+  .hero{padding-top:120px}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{margin:10px auto 0;max-width:340px}
+  .b1{left:0}.b2{right:0}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:start}
+.about-grid p{margin-bottom:16px}
+.values{padding:28px}
+.values h3{font-size:1.5rem;margin-bottom:16px}
+.value{display:flex;gap:14px;padding:12px 0;border-top:1.5px dashed var(--line)}
+.value:first-of-type{border-top:0}
+.dot{flex:none;width:34px;height:34px;border-radius:50%;border:2.5px solid #17171C;display:grid;place-items:center;font-weight:700;color:#17171C;font-size:.9rem}
+.value strong{display:block}
+.value small{color:var(--muted);font-size:.9rem}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+/* Timeline */
+.alt{background:var(--soft)}
+.timeline{position:relative;margin-top:48px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:3px;background:var(--ink);border-radius:2px}
+.job{position:relative;margin-bottom:28px;padding:26px 28px}
+.job::before{content:"";position:absolute;left:-34px;top:30px;width:21px;height:21px;border-radius:50%;background:var(--yellow);border:3px solid #17171C}
+.job.mck::before{background:var(--blue)}
+.job.brk::before{background:var(--green)}
+.job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;align-items:baseline}
+.job h3{font-size:1.45rem}
+.org{font-weight:600;color:var(--blue)}
+.date{font-size:.85rem;font-weight:600;color:var(--muted);background:var(--soft);padding:3px 10px;border-radius:999px;white-space:nowrap}
+.sub{margin-top:18px;padding-top:16px;border-top:1.5px dashed var(--line)}
+.sub h4{font-size:1rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;margin-bottom:8px}
+ul.ticks{list-style:none;margin-top:10px}
+ul.ticks li{position:relative;padding-left:22px;margin:7px 0;color:var(--ink)}
+ul.ticks li::before{content:"";position:absolute;left:2px;top:.62em;width:9px;height:9px;border-radius:2px;background:var(--red);transform:rotate(45deg)}
+ul.ticks li b{font-weight:600}
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.edu .panel{padding:22px}
+.edu h3{font-size:1.2rem;margin-bottom:6px}
+.edu p{font-size:.93rem;color:var(--muted)}
+.subhead{font-size:1.6rem;margin-top:64px}
+@media (max-width:860px){.edu{grid-template-columns:1fr}.job{padding:22px 20px}}
+
+/* Coaching */
+.coach-hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.scene{position:relative;padding:20px 20px 0;overflow:hidden;background:var(--blue-soft);aspect-ratio:1.35/1}
+.scene .f{position:absolute;bottom:0;width:46%}
+.scene .f1{left:3%}.scene .f2{right:3%}
+.scene .bubble{font-size:.85rem}
+.scene .q{top:9%;left:8%}.scene .q::after{right:auto;left:40px}
+.scene .a{top:22%;right:6%;background:var(--yellow)}.scene .a::after{background:var(--yellow);left:auto;right:36px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.card{padding:24px}
+.card h3{font-size:1.25rem;margin:12px 0 8px}
+.card p{font-size:.95rem;color:var(--muted)}
+.vs{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.badge{width:46px;height:46px;border-radius:12px;border:2.5px solid #17171C;display:grid;place-items:center;font-size:1.3rem}
+.for{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.for .panel{padding:28px}
+.for h3{font-size:1.4rem;margin-bottom:6px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag{font-size:.85rem;padding:5px 12px;border-radius:999px;background:var(--soft);border:1.5px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px;counter-reset:s}
+.step{padding:24px;position:relative}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:20px;width:38px;height:38px;border-radius:50%;background:var(--red);color:#fff;border:2.5px solid #17171C;display:grid;place-items:center;font-weight:700}
+.step h3{font-size:1.15rem;margin:10px 0 6px}
+.step p{font-size:.93rem;color:var(--muted)}
+.note{margin-top:22px;padding:18px 22px;border-left:5px solid var(--yellow);background:var(--surface);border-radius:8px;font-size:.95rem}
+.cert{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:center;padding:30px;margin-top:56px}
+.cert img{border:2.5px solid #17171C;border-radius:10px;cursor:zoom-in;transition:transform .3s}
+.cert img:hover{transform:rotate(-1deg) scale(1.02)}
+.cert h3{font-size:1.8rem;margin:6px 0 10px}
+.cert dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:16px 0 22px;font-size:.95rem}
+.cert dt{color:var(--muted)}
+.cert dd{font-weight:600}
+@media (max-width:960px){.grid4,.steps{grid-template-columns:repeat(2,1fr)}.steps{row-gap:34px}}
+@media (max-width:860px){.coach-hero,.for,.cert,.grid3{grid-template-columns:1fr}}
+@media (max-width:560px){.grid4,.steps{grid-template-columns:1fr}}
+
+/* Testimonials */
+.quotes{columns:3 300px;column-gap:18px;margin-top:40px}
+.quote{break-inside:avoid;margin-bottom:18px;padding:24px}
+.quote p{font-size:.98rem}
+.quote p::before{content:"“";font-family:"DM Serif Display",serif;font-size:3rem;line-height:0;vertical-align:-.45em;color:var(--red);margin-right:4px}
+.who{display:flex;align-items:center;gap:12px;margin-top:16px}
+.ava{width:52px;height:52px;border-radius:50%;border:2.5px solid #17171C;background:var(--blue-soft);overflow:hidden;flex:none}
+.ava svg{width:100%;height:100%;transform:translateY(6%) scale(1.15)}
+.who small{color:var(--muted);font-size:.87rem;line-height:1.35}
+
+/* Crowd */
+.crowd{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:46px auto 0;max-width:1000px}
+.crowd .p{width:88px;transition:transform .25s}
+.crowd .p:hover{transform:translateY(-8px) rotate(-3deg)}
+@media (max-width:560px){.crowd .p{width:62px}}
+
+/* Contact */
+.contact{padding:56px 40px;text-align:center;background:var(--blue);color:#fff;border-color:#17171C;box-shadow:7px 7px 0 #17171C;position:relative;overflow:hidden}
+:root[data-theme="dark"] .contact{background:#24477F}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .contact{background:#24477F}}
+.contact h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:12px}
+.contact p{opacity:.9;max-width:620px;margin:0 auto 28px}
+.contact .btn-ghost{background:#fff;color:#17171C;border-color:#17171C}
+footer{padding:36px 0 48px;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;background:rgba(10,10,14,.82);display:none;place-items:center;z-index:100;padding:20px;cursor:zoom-out}
+.lb.open{display:grid}
+.lb img{max-height:90vh;border-radius:10px;border:3px solid #fff}
+
+/* Ligne-claire figures */
+.fig svg{display:block;width:100%;height:auto;overflow:visible}
+.eyes{animation:blink 6s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+
+/* Scroll reveal (AstroWind-style) */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#home"><span class="brand-mark fig" data-person="me" data-crop="1"></span><span class="brand-name">Chaoping Ma</span></a>
+    <nav class="links" id="links">
+      <a href="#about" data-i18n="nav.about"></a>
+      <a href="#experience" data-i18n="nav.exp"></a>
+      <a href="#coaching" data-i18n="nav.coach"></a>
+      <a href="#contact" data-i18n="nav.contact"></a>
+    </nav>
+    <div class="tools">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en">EN</button><button data-lang="de">DE</button><button data-lang="zh">中文</button>
+      </div>
+      <button class="icon-btn" id="theme" aria-label="Toggle dark mode">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menu" aria-label="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="tagline reveal">
+          <span class="chip y" data-i18n="hero.chip1"></span>
+          <span class="chip">ex-McKinsey</span>
+          <span class="chip">ICF ACC</span>
+        </div>
+        <h1 class="reveal d1" data-i18n="hero.title"></h1>
+        <p class="lead reveal d2" data-i18n="hero.lead"></p>
+        <div class="cta reveal d3">
+          <a class="btn btn-primary js-linkedin" href="#" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/></svg>
+            <span data-i18n="hero.cta1"></span></a>
+          <a class="btn btn-ghost" href="#coaching"><span data-i18n="hero.cta2"></span> →</a>
+        </div>
+      </div>
+      <div class="hero-art reveal d2">
+        <div class="hero-disc"></div>
+        <div class="hero-fig fig" data-person="me"></div>
+        <div class="bubble b1" data-i18n="hero.b1"></div>
+        <div class="bubble b2" data-i18n="hero.b2"></div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="panel stat reveal"><b>7+</b><span data-i18n="stat.1"></span></div>
+      <div class="panel stat reveal d1"><b>300+</b><span data-i18n="stat.2"></span></div>
+      <div class="panel stat reveal d2"><b>€500m+</b><span data-i18n="stat.3"></span></div>
+      <div class="panel stat reveal d3"><b>3</b><span data-i18n="stat.4"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="kicker" data-i18n="about.k"></span>
+      <h2 class="h2" data-i18n="about.t"></h2>
+      <p data-i18n="about.p1"></p>
+      <p data-i18n="about.p2"></p>
+      <p data-i18n="about.p3"></p>
+    </div>
+    <aside class="panel values reveal d2">
+      <h3 data-i18n="val.t"></h3>
+      <div class="value"><span class="dot" style="background:var(--yellow)">=</span><div><strong data-i18n="val.1"></strong><small data-i18n="val.1d"></small></div></div>
+      <div class="value"><span class="dot" style="background:#9CC1F0">?</span><div><strong data-i18n="val.2"></strong><small data-i18n="val.2d"></small></div></div>
+      <div class="value"><span class="dot" style="background:#F4A99C">♡</span><div><strong data-i18n="val.3"></strong><small data-i18n="val.3d"></small></div></div>
+      <div class="value"><span class="dot" style="background:#9ED6BC">↗</span><div><strong data-i18n="val.4"></strong><small data-i18n="val.4d"></small></div></div>
+    </aside>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="alt">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker" data-i18n="exp.k"></span>
+      <h2 class="h2" data-i18n="exp.t"></h2>
+      <p class="lead" data-i18n="exp.l"></p>
+    </div>
+    <div class="timeline">
+      <article class="panel job reveal">
+        <div class="job-head"><div><h3 data-i18n="basf.role"></h3><div class="org">BASF SE · In-house Consulting</div></div><span class="date">03/2025 – <span data-i18n="today"></span></span></div>
+        <ul class="ticks">
+          <li data-i18n="basf.1"></li><li data-i18n="basf.2"></li><li data-i18n="basf.3"></li><li data-i18n="basf.4"></li>
+        </ul>
+      </article>
+
+      <article class="panel job brk reveal">
+        <div class="job-head"><div><h3 data-i18n="brk.role"></h3><div class="org" data-i18n="brk.org"></div></div><span class="date">07/2024 – 02/2025</span></div>
+        <ul class="ticks"><li data-i18n="brk.1"></li><li data-i18n="brk.2"></li><li data-i18n="brk.3"></li></ul>
+      </article>
+
+      <article class="panel job mck reveal">
+        <div class="job-head"><div><h3>McKinsey &amp; Company</h3><div class="org">Frankfurt</div></div><span class="date">01/2019 – 06/2024</span></div>
+        <div class="sub">
+          <h4><span data-i18n="mck1.role"></span><span class="date">01/2023 – 06/2024</span></h4>
+          <ul class="ticks"><li data-i18n="mck1.1"></li><li data-i18n="mck1.2"></li><li data-i18n="mck1.3"></li></ul>
+        </div>
+        <div class="sub">
+          <h4><span data-i18n="mck2.role"></span><span class="date">07/2022 – 12/2022</span></h4>
+          <ul class="ticks"><li data-i18n="mck2.1"></li><li data-i18n="mck2.2"></li></ul>
+        </div>
+        <div class="sub">
+          <h4><span data-i18n="mck3.role"></span><span class="date">01/2019 – 06/2022</span></h4>
+          <ul class="ticks"><li data-i18n="mck3.1"></li><li data-i18n="mck3.2"></li><li data-i18n="mck3.3"></li><li data-i18n="mck3.4"></li><li data-i18n="mck3.5"></li></ul>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="subhead reveal" data-i18n="edu.t"></h3>
+    <div class="edu">
+      <div class="panel lift reveal"><h3>University of Mannheim</h3><p data-i18n="edu.1"></p></div>
+      <div class="panel lift reveal d1"><h3>Peking University</h3><p data-i18n="edu.2"></p></div>
+      <div class="panel lift reveal d2"><h3 data-i18n="edu.3t"></h3><p>BCG · Lazard · KPMG · Deloitte</p><p data-i18n="edu.3"></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COACHING -->
+<section id="coaching">
+  <div class="wrap">
+    <div class="coach-hero">
+      <div class="reveal">
+        <span class="kicker" data-i18n="co.k"></span>
+        <h2 class="h2" data-i18n="co.t"></h2>
+        <p class="lead" data-i18n="co.l"></p>
+      </div>
+      <div class="panel scene reveal d2">
+        <div class="f f1 fig" data-person="me"></div>
+        <div class="f f2 fig" data-person="coachee" data-flip="1"></div>
+        <div class="bubble q" data-i18n="co.q"></div>
+        <div class="bubble a" data-i18n="co.a"></div>
+      </div>
+    </div>
+
+    <h3 class="subhead reveal" data-i18n="is.t"></h3>
+    <div class="grid4">
+      <div class="panel card lift reveal"><span class="vs" data-i18n="is.1k"></span><h3 data-i18n="is.1t"></h3><p data-i18n="is.1"></p></div>
+      <div class="panel card lift reveal d1"><span class="vs" data-i18n="is.2k"></span><h3 data-i18n="is.2t"></h3><p data-i18n="is.2"></p></div>
+      <div class="panel card lift reveal d2"><span class="vs" data-i18n="is.3k"></span><h3 data-i18n="is.3t"></h3><p data-i18n="is.3"></p></div>
+      <div class="panel card lift reveal d3"><span class="vs" data-i18n="is.4k"></span><h3 data-i18n="is.4t"></h3><p data-i18n="is.4"></p></div>
+    </div>
+
+    <div class="for">
+      <div class="panel reveal">
+        <h3 data-i18n="for.t"></h3>
+        <ul class="ticks"><li data-i18n="for.1"></li><li data-i18n="for.2"></li><li data-i18n="for.3"></li><li data-i18n="for.4"></li><li data-i18n="for.5"></li></ul>
+      </div>
+      <div class="panel reveal d1">
+        <h3 data-i18n="focus.t"></h3>
+        <p style="color:var(--muted)" data-i18n="focus.l"></p>
+        <div class="tags"><span class="tag" data-i18n="aud.1"></span><span class="tag" data-i18n="aud.2"></span><span class="tag" data-i18n="aud.3"></span></div>
+        <p style="margin-top:18px;font-weight:600" data-i18n="topic.t"></p>
+        <div class="tags"><span class="tag" data-i18n="topic.1"></span><span class="tag" data-i18n="topic.2"></span><span class="tag" data-i18n="topic.3"></span><span class="tag" data-i18n="topic.4"></span><span class="tag" data-i18n="topic.5"></span></div>
+      </div>
+    </div>
+
+    <h3 class="subhead reveal" data-i18n="style.t"></h3>
+    <div class="grid3">
+      <div class="panel card lift reveal"><div class="badge" style="background:#F4A99C">♡</div><h3 data-i18n="st.1t"></h3><p data-i18n="st.1"></p></div>
+      <div class="panel card lift reveal d1"><div class="badge" style="background:var(--yellow)">✦</div><h3 data-i18n="st.2t"></h3><p data-i18n="st.2"></p></div>
+      <div class="panel card lift reveal d2"><div class="badge" style="background:#9CC1F0">▦</div><h3 data-i18n="st.3t"></h3><p data-i18n="st.3"></p></div>
+      <div class="panel card lift reveal"><div class="badge" style="background:#9ED6BC">↑</div><h3 data-i18n="st.4t"></h3><p data-i18n="st.4"></p></div>
+      <div class="panel card lift reveal d1"><div class="badge" style="background:#D9C6F2">◎</div><h3 data-i18n="st.5t"></h3><p data-i18n="st.5"></p></div>
+      <div class="panel card lift reveal d2"><div class="badge" style="background:#FFD9A8">?</div><h3 data-i18n="st.6t"></h3><p data-i18n="st.6"></p></div>
+    </div>
+
+    <h3 class="subhead reveal" data-i18n="how.t"></h3>
+    <div class="steps">
+      <div class="panel step reveal"><h3 data-i18n="how.1t"></h3><p data-i18n="how.1"></p></div>
+      <div class="panel step reveal d1"><h3 data-i18n="how.2t"></h3><p data-i18n="how.2"></p></div>
+      <div class="panel step reveal d2"><h3 data-i18n="how.3t"></h3><p data-i18n="how.3"></p></div>
+      <div class="panel step reveal d3"><h3 data-i18n="how.4t"></h3><p data-i18n="how.4"></p></div>
+    </div>
+    <p class="note reveal" data-i18n="how.note"></p>
+
+    <div class="panel cert reveal">
+      <img src="assets/icf-acc-certificate.png" alt="ICF Associate Certified Coach (ACC) certificate – Chaoping Ma" id="certImg" loading="lazy">
+      <div>
+        <span class="kicker" data-i18n="cert.k"></span>
+        <h3>Associate Certified Coach (ACC)</h3>
+        <p style="color:var(--muted)" data-i18n="cert.l"></p>
+        <dl>
+          <dt data-i18n="cert.by"></dt><dd>International Coaching Federation (ICF)</dd>
+          <dt data-i18n="cert.on"></dt><dd>23.10.2025</dd>
+          <dt data-i18n="cert.to"></dt><dd>31.10.2028</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="alt" id="voices">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="kicker" data-i18n="tm.k"></span>
+      <h2 class="h2" data-i18n="tm.t"></h2>
+    </div>
+    <div class="quotes">
+      <figure class="panel quote reveal"><p data-i18n="q.1"></p><figcaption class="who"><span class="ava fig" data-person="6" data-crop="1"></span><small data-i18n="q.1w"></small></figcaption></figure>
+      <figure class="panel quote reveal d1"><p data-i18n="q.2"></p><figcaption class="who"><span class="ava fig" data-person="1" data-crop="1"></span><small data-i18n="q.2w"></small></figcaption></figure>
+      <figure class="panel quote reveal d2"><p data-i18n="q.3"></p><figcaption class="who"><span class="ava fig" data-person="16" data-crop="1"></span><small data-i18n="q.3w"></small></figcaption></figure>
+      <figure class="panel quote reveal"><p data-i18n="q.4"></p><figcaption class="who"><span class="ava fig" data-person="10" data-crop="1"></span><small data-i18n="q.4w"></small></figcaption></figure>
+      <figure class="panel quote reveal d1"><p data-i18n="q.5"></p><figcaption class="who"><span class="ava fig" data-person="0" data-crop="1"></span><small data-i18n="q.5w"></small></figcaption></figure>
+      <figure class="panel quote reveal d2"><p data-i18n="q.6"></p><figcaption class="who"><span class="ava fig" data-person="12" data-crop="1"></span><small data-i18n="q.6w"></small></figcaption></figure>
+    </div>
+
+    <div class="center reveal" style="margin-top:70px">
+      <h3 style="font-size:1.7rem" data-i18n="crowd.t"></h3>
+      <p class="lead" data-i18n="crowd.l"></p>
+    </div>
+    <div class="crowd" id="crowd"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="panel contact reveal">
+      <h2 data-i18n="ct.t"></h2>
+      <p data-i18n="ct.l"></p>
+      <a class="btn btn-ghost js-linkedin" href="#" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/></svg>
+        <span data-i18n="ct.btn"></span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Chaoping Ma · Heidelberg</span><a href="#home" data-i18n="top"></a></div></footer>
+<div class="lb" id="lb"><img src="assets/icf-acc-certificate.png" alt="ICF ACC certificate"></div>
+
+<script>
+/* ===================== EDIT HERE ===================== */
+const LINKEDIN_URL = "https://www.linkedin.com/in/chaoping-ma-8b560373";
+/* ===================================================== */
+
+/* Translations: key: [EN, DE, 中文] */
+const T = {
+"nav.about":["About","Über mich","关于我"],
+"nav.exp":["Experience","Erfahrung","经历"],
+"nav.coach":["Coaching","Coaching","教练"],
+"nav.contact":["Contact","Kontakt","联系"],
+"hero.chip1":["Strategy & Transformation","Strategie & Transformation","战略与转型"],
+"hero.title":["Hi, I'm <em>Chaoping</em>.","Hallo, ich bin <em>Chaoping</em>.","你好，我是 <em>Chaoping</em>。"],
+"hero.lead":["I take Board-sponsored transformations from strategy to execution – and I make change stick by putting people at the centre. Ex-McKinsey, now at BASF In-house Consulting, and an ICF-certified coach.",
+ "Ich begleite vorstandsgetriebene Transformationen von der Strategie bis zur Umsetzung – und sorge dafür, dass Veränderung wirkt, indem ich den Menschen in den Mittelpunkt stelle. Ex-McKinsey, heute bei BASF In-house Consulting und ICF-zertifizierter Coach.",
+ "我推动董事会级别的转型项目从战略走向落地，并以人为本，让变革真正扎根。前麦肯锡咨询顾问，现任职于巴斯夫内部咨询，同时是 ICF 认证教练。"],
+"hero.cta1":["View my LinkedIn","Zum LinkedIn-Profil","查看我的 LinkedIn"],
+"hero.cta2":["Explore coaching","Coaching entdecken","了解我的教练服务"],
+"hero.b1":["Strategy → Execution","Strategie → Umsetzung","从战略到落地"],
+"hero.b2":["What matters most to you?","Was ist Ihnen wirklich wichtig?","对你来说，什么最重要？"],
+"stat.1":["years at McKinsey and BASF","Jahre bei McKinsey und BASF","年麦肯锡与巴斯夫经验"],
+"stat.2":["initiatives steered","gesteuerte Initiativen","项举措统筹推进"],
+"stat.3":["identified EBITDA potential","identifiziertes EBITDA-Potenzial","识别的 EBITDA 潜力"],
+"stat.4":["working languages: 中文 · DE · EN","Arbeitssprachen: 中文 · DE · EN","种工作语言：中文 · 德语 · 英语"],
+
+"about.k":["About me","Über mich","关于我"],
+"about.t":["Strategy with a people touch","Strategie mit menschlicher Handschrift","有温度的战略"],
+"about.p1":["I am a transformation leader with 7+ years at McKinsey &amp; Company and BASF In-house Consulting. Most recently, I co-led the central change strategy for BASF's Board-sponsored SAP S/4HANA program.",
+ "Ich bin Transformationsexpertin mit über 7 Jahren Erfahrung bei McKinsey &amp; Company und BASF In-house Consulting. Zuletzt habe ich die zentrale Change-Strategie für BASFs vorstandsgetriebenes SAP-S/4HANA-Programm mitverantwortet.",
+ "我在麦肯锡和巴斯夫内部咨询拥有 7 年以上转型经验。最近，我共同领导了巴斯夫董事会级 SAP S/4HANA 项目的核心变革管理战略。"],
+"about.p2":["My track record spans performance, operating model, organization and strategy work. My sweet spot is where strategy, organization and people meet – hypothesis-driven, executive-facing and committed to making change stick.",
+ "Mein Schwerpunkt liegt an der Schnittstelle von Strategie, Organisation und Menschen: Performance-Programme, Operating Models, Organisations- und Kulturtransformationen. Hypothesengetrieben, auf Augenhöhe mit dem Top-Management – und mit dem Anspruch, dass Veränderung nachhaltig wirkt.",
+ "我的经验覆盖业绩提升、运营模式、组织与战略项目。我最擅长的是战略、组织与人的交汇点——以假设为驱动，与高管层紧密协作，致力于让变革真正落地生根。"],
+"about.p3":["Born in Wuhan, educated at Peking University and the University of Mannheim, I have called Germany home for more than a decade. Beyond work, I coach, love good food and people from different backgrounds, and explore my creative side through improv theatre, dance and stone carving.",
+ "Aufgewachsen in Wuhan, studiert an der Peking-Universität und der Universität Mannheim, lebe ich seit über zehn Jahren in Deutschland. Neben dem Beruf coache ich, liebe gutes Essen und Begegnungen mit Menschen unterschiedlichster Hintergründe und entdecke meine kreative Seite in Improtheater, Tanz und Steinbildhauerei.",
+ "我在武汉长大，先后求学于北京大学与德国曼海姆大学，在德国生活已十余年。工作之外，我做教练，热爱美食，喜欢结识不同背景的人，也在即兴戏剧、舞蹈和石雕中探索自己创造性的一面。"],
+"val.t":["What I stand for","Wofür ich stehe","我的核心价值观"],
+"val.1":["Equality","Gleichwertigkeit","平等"],
+"val.1d":["Every person deserves respect – without any external achievement.","Jeder Mensch verdient Respekt – ganz ohne äußere Leistung.","每个人都值得被尊重与被爱，无需任何外在成就。"],
+"val.2":["Curiosity","Neugier","好奇"],
+"val.2d":["Asking the next question is where insight starts.","Erkenntnis beginnt mit der nächsten Frage.","洞见始于下一个好问题。"],
+"val.3":["Deep connection","Echte Verbindung","深度连接"],
+"val.3d":["Real change happens between people.","Echte Veränderung entsteht zwischen Menschen.","真正的改变发生在人与人之间。"],
+"val.4":["Continuous growth","Stetiges Wachstum","持续成长"],
+"val.4d":["Life is about experience, not only the result.","Das Leben ist Erfahrung – nicht nur Ergebnis.","人生重在体验，而不只是结果。"],
+
+"exp.k":["Experience","Berufserfahrung","工作经历"],
+"exp.t":["From strategy to execution","Von der Strategie zur Umsetzung","从战略到执行"],
+"exp.l":["Selected engagements across automotive, chemicals, energy, transport, telecom and banking.","Ausgewählte Projekte in Automobil, Chemie, Energie, Transport, Telekommunikation und Banking.","精选项目，横跨汽车、化工、能源、交通、电信与银行业。"],
+"today":["today","heute","至今"],
+"basf.role":["Senior Project Manager","Senior Project Manager","高级项目经理"],
+"basf.1":["<b>SAP S/4HANA transformation:</b> co-led the central change strategy for BASF's Board-sponsored program – from change strategy to a change blueprint with critical milestones, through execution, incl. change narrative, stakeholder management and capability building",
+ "<b>SAP-S/4HANA-Transformation:</b> zentrale Change-Strategie für BASFs vorstandsgetriebenes Programm mitverantwortet – von der Change-Strategie über einen Change-Blueprint mit kritischen Meilensteinen bis zur Umsetzung, inkl. Change-Narrativ, Stakeholder-Management und Capability Building",
+ "<b>SAP S/4HANA 转型：</b>共同领导巴斯夫董事会级项目的核心变革战略——从变革战略到包含关键里程碑的变革蓝图，再到执行落地，涵盖变革叙事、利益相关方管理与能力建设"],
+"basf.2":["<b>Global Services operating model:</b> drove service portfolio standardization and optimization, and led the change program to sustain the new operating model",
+ "<b>Global-Services-Operating-Model:</b> Standardisierung und Optimierung des Serviceportfolios vorangetrieben; Change-Programm zur nachhaltigen Verankerung des neuen Operating Models geleitet",
+ "<b>全球服务运营模式：</b>推动服务组合标准化与优化，并领导变革项目，确保新运营模式持续落地"],
+"basf.3":["<b>Leadership alignment:</b> facilitated leadership alignment at SVP and VP level across multiple business units and functions, incl. leadership offsites and change-readiness workshops",
+ "<b>Leadership Alignment:</b> Führungsalignment auf SVP- und VP-Ebene in mehreren Geschäftsbereichen und Funktionen moderiert, u. a. Leadership-Offsites und Change-Readiness-Workshops",
+ "<b>领导层共识：</b>在多个业务单元及职能中主持高级副总裁与副总裁级别的领导层对齐，包括领导力务虚会与变革准备度工作坊"],
+"basf.4":["<b>Practice building:</b> co-led the in-house feedback program; taught change management fundamentals to consultants and coach colleagues and interns",
+ "<b>Practice Building:</b> internes Feedback-Programm mitverantwortet; Change-Management-Grundlagen für Beraterinnen und Berater unterrichtet und Coaching für Kolleginnen, Kollegen und Praktikanten",
+ "<b>团队建设：</b>共同领导内部反馈项目；为顾问讲授变革管理基础，并为同事和实习生提供教练辅导"],
+"brk.role":["Career break – by design","Bewusste Auszeit","主动的职业间隔期"],
+"brk.org":["Coaching · Entrepreneurship · Volunteering","Coaching · Gründung · Ehrenamt","教练 · 创业 · 公益"],
+"brk.1":["Completed ICF-accredited coach training – the foundation of my coaching practice","ICF-akkreditierte Coaching-Ausbildung absolviert – Grundlage meiner Coaching-Praxis","完成 ICF 认可的教练培训，奠定教练实践基础"],
+"brk.2":["Built an early-stage AI-powered matchmaking venture and ran first offline pilot events","Frühphasiges KI-gestütztes Matchmaking-Venture aufgebaut und erste Offline-Pilotevents durchgeführt","创立早期 AI 驱动的社交匹配项目，并举办首批线下试点活动"],
+"brk.3":["Volunteered with Cangli e.V. for the empowerment of Chinese women","Ehrenamtlich bei Cangli e.V. für das Empowerment chinesischer Frauen","在 Cangli e.V. 担任志愿者，支持华人女性赋能"],
+"mck1.role":["Junior Engagement Manager, People & Organization Practice","Junior Engagement Manager, People & Organization Practice","初级项目经理，组织与人才咨询"],
+"mck1.1":["<b>Global HR transformation</b>, Tier-1 automotive supplier (~200k FTE): new HR blueprint and >30 initiatives with ~30% cost reduction potential",
+ "<b>Globale HR-Transformation</b>, Tier-1-Automobilzulieferer (~200k FTE): neuer HR-Blueprint und >30 Initiativen mit ~30 % Kostensenkungspotenzial",
+ "<b>全球 HR 转型</b>，一级汽车供应商（约 20 万员工）：设计新的 HR 组织蓝图，细化 30+ 项举措，总成本节约潜力约 30%"],
+"mck1.2":["<b>Culture transformation</b>, Nordic energy company (~6k FTE): target culture via Board workshops and ~10 focus groups; ambassador network and top-100 leadership program",
+ "<b>Kulturtransformation</b>, nordisches Energieunternehmen (~6k FTE): Zielkultur über Vorstandsworkshops und ~10 Fokusgruppen; Botschafter-Netzwerk und Leadership-Programm für die Top 100",
+ "<b>文化转型</b>，北欧能源公司（约 6 千员工）：通过董事会研讨会与约 10 场员工焦点小组定义目标文化；设计大使网络及前 100 名领导者培养项目"],
+"mck1.3":["<b>DE&amp;I transformation</b> (~5k FTE): steered >20 practice leaders and >60 initiative owners to detail >100 initiatives",
+ "<b>DE&amp;I-Transformation</b> (~5k FTE): >20 Practice Leader und >60 Initiativverantwortliche bei der Ausarbeitung von >100 Initiativen gesteuert",
+ "<b>多元、公平与包容转型</b>（约 5 千员工）：统筹 20+ 位业务负责人和 60+ 位举措负责人，细化 100+ 项举措"],
+"mck2.role":["Capability Building Associate, McKinsey Academy","Capability Building Associate, McKinsey Academy","能力建设顾问，麦肯锡学院"],
+"mck2.1":["Middle Eastern bank: orchestrated an 18-month leadership journey for 130 top and senior managers","Bank im Nahen Osten: 18-monatige Leadership Journey für 130 Top- und Senior-Manager orchestriert","中东银行：为 130 位高层与资深管理者设计并统筹 18 个月领导力发展旅程"],
+"mck2.2":["Japanese chemicals company: tailored a 6-month customer-centricity program for ~80 practitioners on 3 continents","Japanisches Chemieunternehmen: 6-monatiges Customer-Centricity-Programm für ~80 Teilnehmende auf 3 Kontinenten","日本化工企业：为三大洲约 80 名从业者定制 6 个月以客户为中心的能力项目"],
+"mck3.role":["Consultant / Senior Consultant","Consultant / Senior Consultant","咨询顾问 / 高级咨询顾问"],
+"mck3.1":["<b>Performance transformation</b>, Tier-1 automotive supplier (~95k FTE): as PMO, steered >300 initiatives with €500m+ identified EBITDA potential",
+ "<b>Performance-Transformation</b>, Tier-1-Automobilzulieferer (~95k FTE): als PMO >300 Initiativen mit €500 Mio.+ identifiziertem EBITDA-Potenzial gesteuert",
+ "<b>业绩转型</b>，一级汽车供应商（约 9.5 万员工）：作为 PMO 统筹 300+ 项举措，识别 5 亿欧元以上 EBITDA 潜力"],
+"mck3.2":["<b>Depot strategy</b>, European transportation company: blueprint implemented in Germany and Eastern Europe, rolled out to >10 regions",
+ "<b>Depot-Strategie</b>, europäisches Transportunternehmen: Blueprint in Deutschland und Osteuropa umgesetzt, Rollout in >10 Regionen",
+ "<b>场站战略</b>，欧洲交通企业：战略蓝图在德国和东欧落地，并推广至全球 10+ 个区域"],
+"mck3.3":["<b>Procurement &amp; organization</b>: >40 initiatives with 20% savings potential; HR and Finance organization design (N-1 to N-3)",
+ "<b>Einkauf &amp; Organisation</b>: >40 Initiativen mit 20 % Einsparpotenzial; Organisationsdesign für HR und Finance (N-1 bis N-3)",
+ "<b>采购与组织</b>：制定 40+ 项举措，节约潜力 20%；设计 HR 与财务组织架构（N-1 至 N-3）"],
+"mck3.4":["<b>Strategic relaunch, McKinsey for Children e.V.</b>: mobilized ~150 volunteers, raised ~€250k per year, KPI controlling for 12 projects reaching >2,000 children",
+ "<b>Strategischer Relaunch, McKinsey for Children e.V.</b>: ~150 Ehrenamtliche mobilisiert, ~€250k pro Jahr eingeworben, KPI-Controlling für 12 Projekte mit >2.000 Kindern",
+ "<b>McKinsey for Children e.V. 战略重启</b>：动员约 150 名志愿者，年筹款约 25 万欧元，为惠及 2000+ 名儿童的 12 个项目建立 KPI 管控"],
+"mck3.5":["<b>Firm building:</b> led “Asians at McKinsey”, a network for colleagues of Asian background","<b>Firm Building:</b> „Asians at McKinsey“ geleitet – ein Netzwerk für Kolleginnen und Kollegen mit asiatischem Hintergrund","<b>公司建设：</b>领导 “Asians at McKinsey” 亚裔员工网络"],
+"edu.t":["Education","Ausbildung","教育背景"],
+"edu.1":["Master in Management (1.3) · Bachelor in Business Management (1.3) · 2013 – 2018","Master in Management (1,3) · Bachelor in Unternehmensführung (1,3) · 2013 – 2018","管理学硕士（1.3）· 工商管理学士（1.3）· 2013 – 2018"],
+"edu.2":["Bachelor in Economics and Bachelor in German Literature (GPA 3.7/4.0) · 2009 – 2013","Bachelor in Volkswirtschaft und Bachelor in Germanistik (GPA 3,7/4,0) · 2009 – 2013","经济学学士及德语语言文学学士（GPA 3.7/4.0）· 2009 – 2013"],
+"edu.3t":["Internships","Praktika","实习经历"],
+"edu.3":["Strategy, M&amp;A, Deal Advisory, Audit · 2015 – 2017","Strategie, M&amp;A, Deal Advisory, Wirtschaftsprüfung · 2015 – 2017","战略、并购、交易咨询、审计 · 2015 – 2017"],
+
+"co.k":["Coaching · my side passion","Coaching · mein Herzensprojekt","教练 · 我热爱的副业"],
+"co.t":["Coaching the whole person – head, heart and soul","Coaching für den ganzen Menschen – Kopf, Herz und Seele","陪伴完整的你——头脑、内心与灵魂"],
+"co.l":["Coaching is partnering with you in a thought-provoking and creative process that inspires you to maximise your personal and professional potential. I offer a safe, judgment-free space for deep thinking – so you can find the answers that work best for you.",
+ "Coaching ist eine Partnerschaft in einem zum Nachdenken anregenden, kreativen Prozess, der Sie inspiriert, Ihr persönliches und berufliches Potenzial voll zu entfalten. Ich biete einen sicheren, wertfreien Raum zum Denken – damit Sie die Antworten finden, die wirklich zu Ihnen passen.",
+ "教练是一种伙伴关系：在一个启发思考、富有创造力的过程中，激发你最大化个人与职业潜能。我为你提供一个安全、不评判的深度思考空间，帮助你找到真正适合自己的答案。"],
+"co.q":["What would you do if you couldn't fail?","Was würden Sie tun, wenn Sie nicht scheitern könnten?","如果不会失败，你会做什么？"],
+"co.a":["Hmm… I'd finally start.","Hm … ich würde endlich anfangen.","嗯……我会终于开始。"],
+"is.t":["What coaching is – and is not","Was Coaching ist – und was nicht","教练是什么，又不是什么"],
+"is.1k":["vs. mentoring","vs. Mentoring","vs. 导师"],"is.1t":["Your answer, not mine","Ihre Antwort, nicht meine","你的答案，而非我的"],
+"is.1":["A mentor advises from their own experience. As a coach, I help you find the answer that works best for you.","Ein Mentor berät aus eigener Erfahrung. Als Coach helfe ich Ihnen, die Antwort zu finden, die für Sie am besten passt.","导师基于自身经验给出建议；而教练帮助你找到最适合你自己的答案。"],
+"is.2k":["vs. counselling","vs. Beratung","vs. 心理咨询"],"is.2t":["Equal partners","Auf Augenhöhe","平等的伙伴"],
+"is.2":["You are an equal peer, not a patient. We build on your own ability to find solutions.","Sie sind ein gleichwertiges Gegenüber, kein Patient. Wir bauen auf Ihre eigene Lösungskompetenz.","你是平等的伙伴，而不是需要治疗的病人。我们一起激发你自己找到解决方案的能力。"],
+"is.3k":["vs. therapy","vs. Therapie","vs. 心理治疗"],"is.3t":["Forward-looking","Zukunftsgerichtet","面向未来"],
+"is.3":["Therapy heals the past. Coaching explores your vision, focuses on the present and looks to the future.","Therapie heilt die Vergangenheit. Coaching erkundet Ihre Vision, fokussiert die Gegenwart und blickt nach vorn.","心理治疗疗愈过去；教练探索你的愿景，专注当下，展望未来。"],
+"is.4k":["vs. small talk","vs. Smalltalk","vs. 闲聊"],"is.4t":["Clarity with intent","Klarheit mit Absicht","有方向的澄清"],
+"is.4":["Through deep listening and skilful questions, you see yourself more clearly and design your own journey.","Durch tiefes Zuhören und gezielte Fragen sehen Sie sich klarer und gestalten Ihren eigenen Weg.","通过深度倾听与有力提问，你更清晰地认识自己，规划属于你的人生旅程。"],
+"for.t":["When to consider coaching","Wann Coaching sinnvoll ist","什么时候适合找教练"],
+"for.1":["You face a difficult choice at a crossroads and want to decide with confidence","Sie stehen an einer Weggabelung und möchten mit Zuversicht entscheiden","站在人生的十字路口，希望充满信心地做出选择"],
+"for.2":["You feel lost and wish for a map and compass within you","Sie fühlen sich orientierungslos und wünschen sich eine innere Landkarte und einen Kompass","感到迷茫，希望找到内心的地图与指南针"],
+"for.3":["You are climbing a steep peak and need more courage and wisdom","Sie erklimmen einen steilen Gipfel und brauchen mehr Mut und Weisheit","正在攀登险峰，需要更多勇气与智慧"],
+"for.4":["You are going through a low point or upheaval and want to start anew","Sie erleben einen Tiefpunkt oder Umbruch und möchten neu beginnen","正经历低谷或动荡，希望调整状态、重新出发"],
+"for.5":["You have seen a lot of scenery, yet feel it is time for a change","Sie haben viel gesehen und spüren dennoch: Es ist Zeit für Veränderung","看过许多风景，却感到是时候做出改变了"],
+"focus.t":["Who I work with","Mit wem ich arbeite","我陪伴的人群"],
+"focus.l":["I coach in Chinese, German and English, online or in person.","Ich coache auf Chinesisch, Deutsch und Englisch – online oder persönlich.","我可用中文、德语和英语进行教练，线上或线下均可。"],
+"aud.1":["Young professionals (2–7 years)","Young Professionals (2–7 Jahre)","青年职场人（2–7 年经验）"],
+"aud.2":["PhD students","Promovierende","博士生"],
+"aud.3":["Working moms","Berufstätige Mütter","职场妈妈"],
+"topic.t":["Typical topics","Typische Themen","常见话题"],
+"topic.1":["Career & life choices","Karriere- & Lebensentscheidungen","职业与人生选择"],
+"topic.2":["Feeling stuck","Sich festgefahren fühlen","感到停滞"],
+"topic.3":["Self-confidence","Selbstvertrauen","自信"],
+"topic.4":["Self-compassion","Selbstmitgefühl","自我关怀"],
+"topic.5":["Setting boundaries","Grenzen setzen","设立边界"],
+"style.t":["My coaching style","Mein Coaching-Stil","我的教练风格"],
+"st.1t":["Empathetic & supportive","Empathisch & unterstützend","共情与支持"],
+"st.1":["A safe, judgment-free space where you feel understood, valued and seen.","Ein sicherer, wertfreier Raum, in dem Sie sich verstanden, wertgeschätzt und gesehen fühlen.","营造安全、不评判的空间，让你感到被理解、被重视、被看见。"],
+"st.2t":["Insightful & transformative","Erkenntnisreich & transformativ","洞察与转化"],
+"st.2":["I capture nuances, distil key messages and help uncover the root causes of challenges.","Ich erfasse Nuancen, verdichte Kernbotschaften und helfe, die Ursachen von Herausforderungen zu erkennen.","捕捉细微之处，提炼关键信息，帮助你看见挑战背后的根源。"],
+"st.3t":["Structured & purpose-driven","Strukturiert & zielorientiert","结构化与目标导向"],
+"st.3":["A clear process to navigate your thoughts and align with your values and goals.","Ein klarer Prozess, um Gedanken zu ordnen und mit Ihren Werten und Zielen in Einklang zu bringen.","以清晰的流程梳理思路，让行动与你的价值观和目标对齐。"],
+"st.4t":["Empowering & strength-based","Stärkend & ressourcenorientiert","赋能与优势视角"],
+"st.4":["From self-doubt to resilience – by building on gratitude, strengths and confidence.","Vom Selbstzweifel zur Resilienz – aufbauend auf Dankbarkeit, Stärken und Selbstvertrauen.","从自我怀疑走向韧性——以感恩、优势与自信为基石。"],
+"st.5t":["Tailored & mindful","Individuell & achtsam","个性化与正念"],
+"st.5":["Mindfulness, visualisation and reflective questions – tuned to your unique needs.","Achtsamkeit, Visualisierung und reflektierende Fragen – abgestimmt auf Ihre Bedürfnisse.","运用正念、可视化与反思性提问，贴合你的独特需求。"],
+"st.6t":["Powerful questions","Kraftvolle Fragen","有力提问"],
+"st.6":["Active listening and well-timed questions that challenge limiting beliefs and open new paths.","Aktives Zuhören und gut gesetzte Fragen, die einschränkende Glaubenssätze hinterfragen und neue Wege öffnen.","积极倾听，适时提出有力问题，挑战限制性信念，打开新的可能。"],
+"how.t":["How we work together","So arbeiten wir zusammen","合作方式"],
+"how.1t":["Intro conversation","Kennenlerngespräch","初步沟通"],
+"how.1":["We clarify what brings you to coaching and what you expect.","Wir klären, was Sie zum Coaching führt und was Sie erwarten.","了解你为何寻求教练，以及你的期待。"],
+"how.2t":["Chemistry & agreement","Chemistry & Vereinbarung","化学反应与教练协议"],
+"how.2":["We align on goals, my role, format (online or in person), frequency and pricing.","Wir stimmen Ziele, meine Rolle, Format (online oder vor Ort), Frequenz und Konditionen ab.","共同确定目标、教练角色、形式（线上或线下）、频率与费用。"],
+"how.3t":["Coaching sessions","Coaching-Sessions","教练会谈"],
+"how.3":["Usually 60 minutes. You bring the topic and set the agenda.","In der Regel 60 Minuten. Sie bringen das Thema mit und bestimmen die Agenda.","通常 60 分钟，由你带来话题、决定议程。"],
+"how.4t":["Flexible bundles","Flexible Pakete","灵活套餐"],
+"how.4":["Session bundles agreed individually; mentoring can be added, e.g. 45 min coaching + 15 min mentoring.","Individuell vereinbarte Pakete; Mentoring ist kombinierbar, z. B. 45 Min. Coaching + 15 Min. Mentoring.","次数可灵活约定；也可结合导师辅导，例如 45 分钟教练 + 15 分钟指导。"],
+"how.note":["<b>Honest note:</b> if your topic needs therapy (e.g. trauma work), or you are looking for 100% direct advice, a therapist or mentor will serve you better – and I'm happy to say so.",
+ "<b>Ehrlich gesagt:</b> Wenn Ihr Thema eine Therapie erfordert (z. B. Traumaarbeit) oder Sie zu 100 % direkte Ratschläge suchen, sind Sie bei einer Therapeutin oder einem Mentor besser aufgehoben – das sage ich Ihnen offen.",
+ "<b>坦诚说明：</b>如果你的议题需要专业治疗（如创伤治疗），或你希望得到 100% 的直接建议，那么心理治疗师或导师会更适合你——我会坦诚告诉你。"],
+"cert.k":["Credential","Zertifizierung","认证"],
+"cert.l":["Earned by demonstrating knowledge and proficient use of core coaching skills through ICF's comprehensive application and evaluation process.","Verliehen für nachgewiesenes Wissen und die souveräne Anwendung der Coaching-Kernkompetenzen im umfassenden Bewerbungs- und Prüfungsverfahren der ICF.","通过 ICF 全面的申请与评估流程，证明对核心教练能力的掌握与熟练运用。"],
+"cert.by":["Issued by","Verliehen von","颁发机构"],
+"cert.on":["Awarded","Verliehen am","颁发日期"],
+"cert.to":["Valid through","Gültig bis","有效期至"],
+
+"tm.k":["Client voices","Stimmen von Coachees","客户心声"],
+"tm.t":["What coachees say","Was Coachees sagen","来自客户的反馈"],
+"q.1":["Her powerful, thought-provoking questions challenged my perspectives and guided me to uncover my core values and purpose. A space completely free from judgment, where I felt safe, acknowledged and truly seen.",
+ "Ihre kraftvollen Fragen haben meine Perspektiven herausgefordert und mich zu meinen Kernwerten und meinem Sinn geführt. Ein Raum völlig frei von Bewertung, in dem ich mich sicher, anerkannt und wirklich gesehen fühlte.",
+ "她有力而发人深省的提问挑战了我原有的视角，引导我发现自己的核心价值与人生目标。那是一个完全不被评判的空间，我感到安全、被认可、被真正看见。"],
+"q.1w":["Coachee, young professional","Coachee, Young Professional","客户，青年职场人"],
+"q.2":["Her exceptional ability to catch nuances, distil key messages and synthesise them in an actionable way stands out. During a critical time in my life, her coaching helped me organise my ideas and implement my plans.",
+ "Besonders ist ihre Fähigkeit, Nuancen zu erfassen, Kernbotschaften zu verdichten und daraus Handlungsschritte zu machen. In einer entscheidenden Lebensphase half mir ihr Coaching, meine Gedanken zu ordnen und meine Pläne umzusetzen.",
+ "她能敏锐捕捉细节、提炼关键并转化为可执行的行动。在我人生的关键时期，她的教练帮助我理清思路、落实计划。"],
+"q.2w":["Coachee, multiple sessions","Coachee, mehrere Sessions","客户，多次会谈"],
+"q.3":["Coaching is Socratic dialogue meets positive psychology meets mindfulness. My sessions helped me become aware of so much that lay beneath the surface – and make positive changes I still enjoy today.",
+ "Coaching ist sokratischer Dialog trifft positive Psychologie trifft Achtsamkeit. Die Sessions haben mir bewusst gemacht, was unter der Oberfläche lag – und zu positiven Veränderungen geführt, die bis heute wirken.",
+ "教练是苏格拉底式对话、积极心理学与正念的结合。会谈让我觉察到许多隐藏在表面之下的东西，并带来至今仍让我受益的积极改变。"],
+"q.3w":["Coachee","Coachee","客户"],
+"q.4":["Systematic and organised, she accompanied me like a partner to analyse the problem step by step, find its root cause and explore feasible solutions.",
+ "Systematisch und strukturiert hat sie mich wie eine Partnerin begleitet, das Problem Schritt für Schritt zu analysieren, die Ursache zu finden und machbare Lösungen zu entwickeln.",
+ "她的引导系统而有条理，像伙伴一样陪我一步步分析问题、找到根源，并探索可行的解决方案。"],
+"q.4w":["Assistant professor","Assistant Professor","大学助理教授"],
+"q.5":["Whenever a little self-doubt comes up, her affirmation pops up automatically. She showed me how to face a predicament in a better state – and get out of it.",
+ "Wann immer leise Selbstzweifel aufkommen, ist ihre Bestärkung sofort wieder da. Sie hat mir gezeigt, wie ich schwierigen Situationen gestärkt begegne – und wieder herausfinde.",
+ "每当我心中出现一点自我怀疑，她的肯定就会自动浮现。她让我学会以更好的状态面对困境，并走出困境。"],
+"q.5w":["Working mother of two","Berufstätige Mutter von zwei Kindern","两个孩子的职场妈妈"],
+"q.6":["The point of coaching is not to give you a perfect answer, but to help you find the right questions.",
+ "Beim Coaching geht es nicht darum, die perfekte Antwort zu bekommen, sondern die richtigen Fragen zu finden.",
+ "教练的意义不在于给你一个完美的答案，而是帮你找到正确的问题。"],
+"q.6w":["Coachee, self-exploration session","Coachee, Selbstexplorations-Session","客户，自我探索会谈"],
+"crowd.t":["Every person is unique","Jeder Mensch ist einzigartig","每个人都独一无二"],
+"crowd.l":["Clients, colleagues and communities across cultures – each deserving respect without any external achievement.","Klienten, Kolleginnen und Communities über Kulturen hinweg – alle verdienen Respekt, ganz ohne äußere Leistung.","跨越文化的客户、同事与社群——每个人都值得被尊重，无需任何外在成就。"],
+
+"ct.t":["Let's talk","Lassen Sie uns sprechen","期待与你交流"],
+"ct.l":["Whether it's a transformation challenge or a coaching conversation – I look forward to connecting.","Ob Transformationsvorhaben oder Coaching-Gespräch – ich freue mich auf den Austausch.","无论是转型挑战还是一次教练对话，都欢迎与我联系。"],
+"ct.btn":["Connect on LinkedIn","Auf LinkedIn vernetzen","在 LinkedIn 上联系我"],
+"top":["Back to top ↑","Nach oben ↑","返回顶部 ↑"]
+};
+
+/* ---------- Ligne-claire figure generator (original characters) ---------- */
+const SKIN={a1:"#F7DCC0",a2:"#EFCCA6",e1:"#FBE1CF",e2:"#F2CDB3",d1:"#C98E66",d2:"#8D5B3E"};
+const HAIR={blk:"#1F1F26",dbr:"#3B2A21",brn:"#7A4A2A",bln:"#E6C266",gng:"#C8642C",gry:"#9C9AA3"};
+// type: AF=Asian woman, EF=European woman, AM=Asian man, WM=Western man
+const CAST=[
+ /*0 AF*/{t:"AF",s:"a1",h:"bob",hc:"blk",c:"#D6402F"},
+ /*1 AF*/{t:"AF",s:"a2",h:"long",hc:"blk",c:"#2B5CA8",g:1},
+ /*2 AF*/{t:"AF",s:"a1",h:"bun",hc:"blk",c:"#3E8E6E"},
+ /*3 AF*/{t:"AF",s:"a2",h:"pony",hc:"dbr",c:"#F2C14E"},
+ /*4 AF*/{t:"AF",s:"a1",h:"long",hc:"dbr",c:"#8E5BB5"},
+ /*5 AF*/{t:"AF",s:"a2",h:"bob",hc:"dbr",c:"#2B5CA8",g:1},
+ /*6 EF*/{t:"EF",s:"e1",h:"long",hc:"bln",c:"#D6402F"},
+ /*7 EF*/{t:"EF",s:"e2",h:"bun",hc:"gng",c:"#2B5CA8"},
+ /*8 EF*/{t:"EF",s:"e1",h:"curly",hc:"brn",c:"#F2C14E"},
+ /*9 EF*/{t:"EF",s:"e2",h:"pony",hc:"bln",c:"#3E8E6E",g:1},
+ /*10 AM*/{t:"AM",s:"a1",h:"short",hc:"blk",c:"#2B5CA8"},
+ /*11 AM*/{t:"AM",s:"a2",h:"side",hc:"blk",c:"#5E6B7A",g:1},
+ /*12 AM*/{t:"AM",s:"a1",h:"spiky",hc:"blk",c:"#D6402F"},
+ /*13 AM*/{t:"AM",s:"a2",h:"side",hc:"dbr",c:"#3E8E6E"},
+ /*14 AM*/{t:"AM",s:"a1",h:"short",hc:"gry",c:"#F2C14E",g:1},
+ /*15 WM*/{t:"WM",s:"e1",h:"short",hc:"bln",c:"#3E8E6E"},
+ /*16 WM*/{t:"WM",s:"e2",h:"side",hc:"brn",c:"#D6402F",b:1},
+ /*17 WM*/{t:"WM",s:"d1",h:"curlyS",hc:"blk",c:"#2B5CA8"},
+ /*18 WM*/{t:"WM",s:"e1",h:"spiky",hc:"dbr",c:"#F2C14E",g:1},
+ /*19 WM*/{t:"WM",s:"d2",h:"short",hc:"blk",c:"#8E5BB5",b:1}
+];
+const PEOPLE={
+  me:{s:"a1",h:"long",hc:"blk",c:"#24365C",blazer:1,smile:1},
+  coachee:{s:"e1",h:"curly",hc:"brn",c:"#F2C14E"}
+};
+const K="#17171C", SW=3;
+function hairBack(h,c){
+  switch(h){
+    case "long": return `<path d="M29 122 C22 84 24 28 60 25 C96 28 98 84 91 122 Z" fill="${c}" stroke="${K}" stroke-width="${SW}" stroke-linejoin="round"/>`;
+    case "bob": return `<path d="M30 88 C24 60 27 27 60 25 C93 27 96 60 90 88 Z" fill="${c}" stroke="${K}" stroke-width="${SW}" stroke-linejoin="round"/>`;
+    case "bun": return `<circle cx="60" cy="21" r="12" fill="${c}" stroke="${K}" stroke-width="${SW}"/>`;
+    case "pony": return `<path d="M83 38 C106 44 106 86 94 104 C94 82 90 62 79 50 Z" fill="${c}" stroke="${K}" stroke-width="${SW}" stroke-linejoin="round"/>`;
+    case "curly": return `<g fill="${c}" stroke="${K}" stroke-width="${SW}">${[[34,46],[30,64],[34,82],[86,46],[90,64],[86,82],[46,28],[60,24],[74,28]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="12"/>`).join("")}</g>`;
+    default: return "";
+  }
+}
+function hairFront(h,c){
+  const st=`fill="${c}" stroke="${K}" stroke-width="${SW}" stroke-linejoin="round"`;
+  switch(h){
+    case "long": return `<path d="M32 60 C32 34 46 27 62 28 C80 29 89 41 88 60 C80 45 68 40 57 42 C46 45 39 51 32 60 Z" ${st}/>`;
+    case "bob": return `<path d="M33 55 C35 34 48 29 60 29 C73 29 86 35 87 55 C78 48 70 46 60 47 C50 47 41 50 33 55 Z" ${st}/>`;
+    case "bun": case "pony": return `<path d="M33 57 C32 35 46 29 60 29 C75 29 88 36 87 57 C80 42 66 39 57 41 C46 43 38 48 33 57 Z" ${st}/>`;
+    case "curly": return `<g ${st}><circle cx="44" cy="40" r="11"/><circle cx="60" cy="35" r="12"/><circle cx="76" cy="40" r="11"/></g>`;
+    case "short": return `<path d="M33 55 C31 34 46 27 60 27 C76 27 89 34 87 55 C84 43 74 39 60 39 C46 39 36 43 33 55 Z" ${st}/>`;
+    case "side": return `<path d="M33 57 C29 33 48 25 63 27 C81 29 91 40 87 57 C81 45 71 41 52 43 C43 45 37 50 33 57 Z" ${st}/>`;
+    case "spiky": return `<path d="M33 54 L34 34 L42 38 L46 25 L54 33 L60 22 L66 33 L74 25 L78 38 L86 34 L87 54 C82 43 72 40 60 40 C48 40 38 43 33 54 Z" ${st}/>`;
+    case "curlyS": return `<g ${st}>${[[38,44],[44,33],[56,28],[68,29],[78,35],[83,46]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="9"/>`).join("")}</g>`;
+  }
+  return "";
+}
+function figure(p,flip){
+  const skin=SKIN[p.s], hc=HAIR[p.hc];
+  const body = p.blazer
+   ? `<path d="M12 152 C12 114 32 101 60 101 C88 101 108 114 108 152 Z" fill="${p.c}" stroke="${K}" stroke-width="${SW}" stroke-linejoin="round"/>
+      <path d="M46 101 L60 128 L74 101 Z" fill="#fff" stroke="${K}" stroke-width="${SW}" stroke-linejoin="round"/>
+      <path d="M46 101 L56 132 L48 138 L40 106 Z M74 101 L64 132 L72 138 L80 106 Z" fill="${p.c}" stroke="${K}" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="60" cy="140" r="2.4" fill="${K}"/>`
+   : `<path d="M12 152 C12 114 32 101 60 101 C88 101 108 114 108 152 Z" fill="${p.c}" stroke="${K}" stroke-width="${SW}" stroke-linejoin="round"/>
+      <path d="M47 102 C50 112 70 112 73 102" fill="none" stroke="${K}" stroke-width="2.5" stroke-linecap="round"/>`;
+  const glasses = p.g ? `<g fill="none" stroke="${K}" stroke-width="2.4"><circle cx="49" cy="63" r="7.5"/><circle cx="71" cy="63" r="7.5"/><path d="M56.5 63 H63.5"/></g>` : "";
+  const beard = p.b ? `<path d="M36 66 C38 92 50 96 60 96 C70 96 82 92 84 66 C80 80 72 84 60 84 C48 84 40 80 36 66 Z" fill="${hc}" stroke="${K}" stroke-width="${SW}" stroke-linejoin="round"/>` : "";
+  const mouth = p.smile ? `<path d="M52 76 Q60 84 68 76" fill="none" stroke="${K}" stroke-width="2.6" stroke-linecap="round"/>`
+                        : `<path d="M54 77 Q60 81 66 77" fill="none" stroke="${K}" stroke-width="2.6" stroke-linecap="round"/>`;
+  return `<svg viewBox="0 0 120 152" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+   <g ${flip?'transform="translate(120 0) scale(-1 1)"':""}>
+    ${hairBack(p.h,hc)}
+    ${body}
+    <path d="M51 86 L51 103 C55 107 65 107 69 103 L69 86 Z" fill="${skin}" stroke="${K}" stroke-width="${SW}" stroke-linejoin="round"/>
+    <ellipse cx="34" cy="64" rx="5" ry="7" fill="${skin}" stroke="${K}" stroke-width="${SW}"/>
+    <ellipse cx="86" cy="64" rx="5" ry="7" fill="${skin}" stroke="${K}" stroke-width="${SW}"/>
+    <ellipse cx="60" cy="60" rx="26" ry="29" fill="${skin}" stroke="${K}" stroke-width="${SW}"/>
+    ${beard}
+    <circle cx="44" cy="72" r="4.5" fill="#F08C8C" opacity=".35"/><circle cx="76" cy="72" r="4.5" fill="#F08C8C" opacity=".35"/>
+    <path d="M44 53 Q49 50 54 53 M66 53 Q71 50 76 53" fill="none" stroke="${K}" stroke-width="2.4" stroke-linecap="round"/>
+    <g class="eyes"><ellipse cx="49" cy="63" rx="2.6" ry="3.4" fill="${K}"/><ellipse cx="71" cy="63" rx="2.6" ry="3.4" fill="${K}"/></g>
+    <path d="M60 64 Q63 69 59 71" fill="none" stroke="${K}" stroke-width="2.2" stroke-linecap="round"/>
+    ${mouth}
+    ${glasses}
+    ${hairFront(p.h,hc)}
+   </g></svg>`;
+}
+function getPerson(k){ return PEOPLE[k] || CAST[+k]; }
+document.querySelectorAll(".fig[data-person]").forEach(el=>{
+  el.innerHTML = figure(getPerson(el.dataset.person), el.dataset.flip==="1");
+  if(el.dataset.crop){ const s=el.querySelector("svg"); s.setAttribute("viewBox","20 18 80 80"); }
+});
+// Crowd: 20 people – 30% Asian women, 20% European women, 25% Asian men, 25% Western men (shuffled order, fixed seed)
+const order=[0,15,6,10,1,17,7,11,2,18,8,12,3,19,9,13,4,16,14,5];
+document.getElementById("crowd").innerHTML = order.map((i,n)=>`<div class="p fig reveal" style="transition-delay:${(n%10)*.05}s">${figure(CAST[i], n%2===1)}</div>`).join("");
+
+/* ---------- i18n ---------- */
+const LANGS={en:0,de:1,zh:2}, HTML_LANG={en:"en",de:"de",zh:"zh-CN"};
+const TITLES={en:"Chaoping Ma – Strategy, Transformation & Coaching",de:"Chaoping Ma – Strategie, Transformation & Coaching",zh:"Chaoping Ma – 战略、转型与教练"};
+function setLang(l){
+  const i=LANGS[l]??0;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{const v=T[el.dataset.i18n]; if(v) el.innerHTML=v[i];});
+  document.documentElement.lang=HTML_LANG[l]; document.title=TITLES[l];
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.lang===l));
+  try{localStorage.setItem("lang",l)}catch(e){}
+}
+let saved=null; try{saved=localStorage.getItem("lang")}catch(e){}
+const nav=(navigator.language||"en").toLowerCase();
+setLang(saved || (nav.startsWith("zh")?"zh":nav.startsWith("de")?"de":"en"));
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+
+/* ---------- Links, theme, menu, header, reveal, lightbox ---------- */
+document.querySelectorAll(".js-linkedin").forEach(a=>a.href=LINKEDIN_URL);
+document.getElementById("yr").textContent=new Date().getFullYear();
+const root=document.documentElement;
+try{const th=localStorage.getItem("theme"); if(th) root.dataset.theme=th;}catch(e){}
+document.getElementById("theme").addEventListener("click",()=>{
+  const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try{localStorage.setItem("theme",root.dataset.theme)}catch(e){}
+});
+const links=document.getElementById("links");
+document.getElementById("menu").addEventListener("click",()=>links.classList.toggle("open"));
+links.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>links.classList.remove("open")));
+const hdr=document.getElementById("top");
+addEventListener("scroll",()=>hdr.classList.toggle("scrolled",scrollY>20),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.12,rootMargin:"0px 0px -40px 0px"});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+const lb=document.getElementById("lb");
+document.getElementById("certImg").addEventListener("click",()=>lb.classList.add("open"));
+lb.addEventListener("click",()=>lb.classList.remove("open"));
+</script>
+</body>
+</html>
