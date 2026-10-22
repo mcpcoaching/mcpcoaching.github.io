@@ -2,7 +2,7 @@
 
 **For:** the next Claude session (Claude Code or Cowork)
 **Owner:** Chaoping Ma (GitHub: `mcpcoaching`)
-**Last updated:** 2026-10-21
+**Last updated:** 2026-10-22
 
 ---
 
@@ -19,6 +19,7 @@
 History:
 1. 2026-10-21: First deploy. The site came from Cowork's `chaoping-website_1.zip`, unchanged.
 2. 2026-10-21: Added a favicon: the owner's cartoon head (`assets/favicon.svg` and `assets/apple-touch-icon.png`). The owner checked it and approved.
+3. 2026-10-22: The theme button icon now matches the mode (moon in dark, sun in light). The default still follows the OS.
 
 The acceptance checklist (section 8) passed on the live URL. That covers: no console errors; all 144 `data-i18n` elements filled in EN/DE/ZH; `<html lang>` and the title switch; both LinkedIn links are correct and open with `_blank`; the certificate loads; no PDF, email or phone. The page has 26 figures in total: 6 testimonial avatars and 20 in the crowd. The footer reads "© 2026 Chaoping Ma · Heidelberg". There is no horizontal scroll at 384px. Not tested by hand: lightbox click, and whether language and theme stay after a reload.
 
@@ -95,7 +96,7 @@ External dependencies: Google Fonts only (DM Serif Display, Inter, Noto Sans SC,
 - **Figures:** inline SVG from `figure(person, flip)`. Use them as `<div class="fig" data-person="me|coachee|0-19" [data-flip="1"] [data-crop="1"]>`. `data-crop` gives the face-only avatar, as in the header `.brand-mark`.
 - **Favicon:** a static copy of `figure('me')` cropped to viewBox `20 18 80 80`, clipped to a circle on yellow `#F2C14E`. If the portrait in `figure()` changes, regenerate `favicon.svg` the same way. Then re-render the PNG: `qlmanage -t -s 180 -o assets assets/favicon.svg` and rename the output to `apple-touch-icon.png`.
 - **Design tokens** (`:root`): cream `#FBF7EE`, ink `#17171C`, blue `#2B5CA8`, red `#D6402F`, yellow `#F2C14E`. Comic accents: 2.5px ink borders, `5px 5px 0` hard shadows.
-- **Dark mode:** follows `prefers-color-scheme`. The moon button overrides it (`data-theme`, saved in `localStorage`). `prefers-reduced-motion` turns off all animation.
+- **Dark mode:** follows `prefers-color-scheme` by default. The `#theme` button shows the current mode: moon = dark, sun = light (CSS only, `.i-moon` / `.i-sun`). A click that differs from the OS sets `data-theme` and saves it in `localStorage`. A click back to the OS mode clears the override, so the page follows the OS again. `prefers-reduced-motion` turns off all animation.
 - **Responsive:** hamburger menu at ≤860px. The brand name is hidden at ≤480px.
 - Every `localStorage` access is wrapped in try/catch.
 
