@@ -20,6 +20,7 @@ History:
 1. 2026-10-21: First deploy. The site came from Cowork's `chaoping-website_1.zip`, unchanged.
 2. 2026-10-21: Added a favicon: the owner's cartoon head (`assets/favicon.svg` and `assets/apple-touch-icon.png`). The owner checked it and approved.
 3. 2026-10-22: The theme button icon now matches the mode (moon in dark, sun in light). The default still follows the OS.
+4. 2026-10-22: The language default now follows the visitor's system language (EN fallback). The auto-detected language is no longer saved, so only a manual pick is remembered.
 
 The acceptance checklist (section 8) passed on the live URL. That covers: no console errors; all 144 `data-i18n` elements filled in EN/DE/ZH; `<html lang>` and the title switch; both LinkedIn links are correct and open with `_blank`; the certificate loads; no PDF, email or phone. The page has 26 figures in total: 6 testimonial avatars and 20 in the crowd. The footer reads "© 2026 Chaoping Ma · Heidelberg". There is no horizontal scroll at 384px. Not tested by hand: lightbox click, and whether language and theme stay after a reload.
 
@@ -92,7 +93,7 @@ External dependencies: Google Fonts only (DM Serif Display, Inter, Noto Sans SC,
 
 ## 6. Technical notes
 
-- **i18n:** all text lives in object `T` near the bottom: `"key": ["English", "Deutsch", "中文"]`. Elements carry `data-i18n="key"`, and `setLang()` sets their `innerHTML`. Every key needs all 3 languages. The default language follows the browser. The visitor's choice is saved in `localStorage`.
+- **i18n:** all text lives in object `T` near the bottom: `"key": ["English", "Deutsch", "中文"]`. Elements carry `data-i18n="key"`, and `setLang()` sets their `innerHTML`. Every key needs all 3 languages. The default language follows the visitor's system/browser language (`navigator.language`): `de*` gives DE, `zh*` gives ZH, anything else gives EN. Only a manual click is saved in `localStorage`. Clicking the system language again clears the saved choice, the same as the theme button.
 - **Figures:** inline SVG from `figure(person, flip)`. Use them as `<div class="fig" data-person="me|coachee|0-19" [data-flip="1"] [data-crop="1"]>`. `data-crop` gives the face-only avatar, as in the header `.brand-mark`.
 - **Favicon:** a static copy of `figure('me')` cropped to viewBox `20 18 80 80`, clipped to a circle on yellow `#F2C14E`. If the portrait in `figure()` changes, regenerate `favicon.svg` the same way. Then re-render the PNG: `qlmanage -t -s 180 -o assets assets/favicon.svg` and rename the output to `apple-touch-icon.png`.
 - **Design tokens** (`:root`): cream `#FBF7EE`, ink `#17171C`, blue `#2B5CA8`, red `#D6402F`, yellow `#F2C14E`. Comic accents: 2.5px ink borders, `5px 5px 0` hard shadows.

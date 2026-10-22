@@ -782,12 +782,17 @@ function setLang(l){
   document.querySelectorAll("[data-i18n]").forEach(el=>{const v=T[el.dataset.i18n]; if(v) el.innerHTML=v[i];});
   document.documentElement.lang=HTML_LANG[l]; document.title=TITLES[l];
   document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.lang===l));
-  try{localStorage.setItem("lang",l)}catch(e){}
 }
-let saved=null; try{saved=localStorage.getItem("lang")}catch(e){}
+// default = visitor's system/browser language; anything other than DE/ZH falls back to EN
 const nav=(navigator.language||"en").toLowerCase();
-setLang(saved || (nav.startsWith("zh")?"zh":nav.startsWith("de")?"de":"en"));
-document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+const sysLang=nav.startsWith("zh")?"zh":nav.startsWith("de")?"de":"en";
+let saved=null; try{saved=localStorage.getItem("lang")}catch(e){}
+setLang(["en","de","zh"].includes(saved) ? saved : sysLang);
+// only a manual pick is remembered; picking the system language again drops the override
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>{
+  const l=b.dataset.lang; setLang(l);
+  try{ l===sysLang ? localStorage.removeItem("lang") : localStorage.setItem("lang",l) }catch(e){}
+}));
 
 /* ---------- Links, theme, menu, header, reveal, lightbox ---------- */
 document.querySelectorAll(".js-linkedin").forEach(a=>a.href=LINKEDIN_URL);
